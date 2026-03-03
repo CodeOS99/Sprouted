@@ -1,15 +1,10 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
 const JUMP_VELOCITY = 4.8
 const SENSITIVITY = 0.004
-
-#bob variables
-const BOB_FREQ = 2.4
-const BOB_AMP = 0.08
-var t_bob = 0.0
 
 #fov variables
 const BASE_FOV = 75.0
@@ -21,10 +16,14 @@ var gravity = 9.8
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 
+# for additional bobbing things
+var additional_bobbers: Array[Node3D] = []
+var bob_freqs = {}
+var bob_amps = {}
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	Globals.player = self
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -62,20 +61,8 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
 	
-	# Head bob
-	t_bob += delta * velocity.length() * float(is_on_floor())
-	camera.transform.origin = _headbob(t_bob)
-	
-	# FOV
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	move_and_slide()
-
-
-func _headbob(time) -> Vector3:
-	var pos = Vector3.ZERO
-	pos.y = sin(time * BOB_FREQ) * BOB_AMP
-	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
-	return pos
