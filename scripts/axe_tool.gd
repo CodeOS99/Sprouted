@@ -5,6 +5,8 @@ extends Node3D
 var using: bool = false
 var hit_trees = [] # if performance becomes an issue i could give every tree and index, and then binary search along this array to find if the tree exists although i don't think it will be an issue
 
+var tree_particle = preload("res://scenes/tree_blast_particles.tscn")
+
 func use():
 	$AnimationPlayer.play("lmb")
 	using = true
@@ -24,4 +26,10 @@ func _process(delta: float) -> void:
 				if body.chopped():
 					body.queue_free()
 				hit_trees.append(body)
-			
+				spawn_tree_particle()
+
+func spawn_tree_particle():
+	var particles = tree_particle.instantiate()
+	get_tree().root.add_child(particles)
+	particles.global_position = $"Mesh/tool-axe/ParticlePoint".global_position
+	particles.emitting = true

@@ -77,6 +77,9 @@ script = ExtResource("1_725vr")
 [node name="Mesh" parent="." unique_id=1974760275 instance=ExtResource("1_odgf8")]
 transform = Transform3D(3.777092, -1.3546087e-07, -1.3166533, 1.0674833e-07, 4, -1.0530123e-07, 1.3166533, 6.429548e-08, 3.777092, 0, 0, 0)
 
+[node name="ParticlePoint" type="Node3D" parent="Mesh/tool-axe" parent_id_path=PackedInt32Array(1974760275, 969663412) index="0" unique_id=1162108326]
+transform = Transform3D(1, 0, 0, 0, 1, -6.661338e-15, 0, 8.881784e-16, 1, -0.056921866, 0.22610587, -0.012964728)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1316946670]
 libraries/ = SubResource("AnimationLibrary_8s0ly")
 speed_scale = 2.0
