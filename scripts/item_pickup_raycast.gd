@@ -11,11 +11,15 @@ func _physics_process(delta: float) -> void:
 				prev_body.outline_mesh.visible = false
 			prev_body = body
 			prev_body.outline_mesh.visible = true
+			$"../../../HUD/Label".visible = true
 		else:
-			$"../../../HUD/TextureRect".modulate = Color(1.0, 1.0, 1.0, 1.0)
-			if prev_body:
-				prev_body.outline_mesh.visible = false
+			_not_looking()
+
 	else:
-		$"../../../HUD/TextureRect".modulate = Color(1.0, 1.0, 1.0, 1.0)
-		if prev_body:
-			prev_body.outline_mesh.visible = false
+		_not_looking()
+
+func _not_looking():
+	$"../../../HUD/TextureRect".modulate = Color(1.0, 1.0, 1.0, 1.0)
+	if prev_body:
+		prev_body.outline_mesh.visible = false
+	$"../../../HUD/Label".visible = false

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bmp6ypcg1wa0l" path="res://scripts/bobber.gd" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://h0ake6u10bko" path="res://assets/crosshairs/crosshair186.png" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://dwjsj5fg723p5" path="res://scripts/item_pickup_raycast.gd" id="4_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://id52tg434msp" path="res://scenes/inventory_node.tscn" id="7_fjrip"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
@@ -73,3 +74,24 @@ pivot_offset = Vector2(72, 72)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("4_dqkch")
+
+[node name="Label" type="Label" parent="HUD" unique_id=16631269]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = 27.0
+offset_right = 42.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "E to collect"
+
+[node name="InventoryNode" parent="HUD" unique_id=17360702 instance=ExtResource("7_fjrip")]
+layout_mode = 1

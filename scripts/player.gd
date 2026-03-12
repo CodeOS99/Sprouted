@@ -37,6 +37,9 @@ func _process(delta: float) -> void:
 		right_hand_holding.get_child(0).use()
 	elif Input.is_action_just_released("use_tool"):
 		right_hand_holding.get_child(0).reset()
+	
+	if Input.is_action_just_pressed("toggle_inventory"):
+		$HUD/InventoryNode.visible = not $HUD/InventoryNode.visible
 
 func _physics_process(delta):
 	# Add the gravity.

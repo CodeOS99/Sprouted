@@ -16,7 +16,7 @@ sky = SubResource("Sky_72e8q")
 tonemap_mode = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_q7yvd"]
-size = Vector3(20, 1, 20)
+size = Vector3(50, 1, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72e8q"]
 albedo_color = Color(0.4117647, 0.52156866, 0.28235295, 1)
