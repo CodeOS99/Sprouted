@@ -34,11 +34,14 @@ func add_item(item):
 	if slot_idx == -1: # no valid place
 		return
 	
-	if inventory_data.slot_datas[slot_idx].item.title == item.item.title:
-		inventory_data.slot_datas[slot_idx].amount += 1
+	if inventory_data.slot_datas[slot_idx]:
+		if inventory_data.slot_datas[slot_idx].item.title == item.item.title:
+			inventory_data.slot_datas[slot_idx].amount += 1
 	else:
-		inventory_data.slot_datas[slot_idx].amount = 1
-		inventory_data.slot_datas[slot_idx].item = item.item
+		var data:SlotData = SlotData.new()
+		data.item = item.item
+		data.amount = 1
+		inventory_data.slot_datas[slot_idx] = data
 	
 	update_visuals()
 	item.queue_free()

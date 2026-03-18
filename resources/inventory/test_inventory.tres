@@ -2,32 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c10sdqv45s67d" path="res://scripts/inventory_data.gd" id="1_7lhwb"]
 [ext_resource type="Script" uid="uid://deva8qm5xrqy4" path="res://scripts/slot_data.gd" id="2_j26e8"]
-[ext_resource type="Resource" uid="uid://d3w8jmykbe1p2" path="res://resources/inventory/log.tres" id="3_1o8vd"]
-[ext_resource type="Script" uid="uid://dqotofq0kbye" path="res://scripts/item_data.gd" id="4_i04fq"]
-
-[sub_resource type="Resource" id="Resource_j26e8"]
-script = ExtResource("2_j26e8")
-item = ExtResource("3_1o8vd")
-amount = 1
-metadata/_custom_type_script = "uid://deva8qm5xrqy4"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7sco8"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
-[sub_resource type="Resource" id="Resource_ego8e"]
-script = ExtResource("4_i04fq")
-title = "Wooden Log"
-description = "A hunk of wood"
-texture = SubResource("CompressedTexture2D_7sco8")
-metadata/_custom_type_script = "uid://dqotofq0kbye"
-
-[sub_resource type="Resource" id="Resource_qec1d"]
-script = ExtResource("2_j26e8")
-item = SubResource("Resource_ego8e")
-amount = 3
-metadata/_custom_type_script = "uid://deva8qm5xrqy4"
 
 [resource]
 script = ExtResource("1_7lhwb")
-slot_datas = Array[ExtResource("2_j26e8")]([SubResource("Resource_j26e8"), null, null, null, null, null, null, SubResource("Resource_qec1d"), null, null, null, null, null, null, null, null, null, null])
+slot_datas = Array[ExtResource("2_j26e8")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://c10sdqv45s67d"
