@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dqsd06vdicy1a"]
 
+[ext_resource type="PackedScene" uid="uid://b0mtqyuxbf0np" path="res://scenes/crafting_slot.tscn" id="1_uiuyx"]
+
 [node name="CraftingMenu" type="Control" unique_id=210753137]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +9,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=625180817]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="CraftingSlot" parent="GridContainer" unique_id=2138595711 instance=ExtResource("1_uiuyx")]
+layout_mode = 2
+
+[node name="CraftingSlot2" parent="GridContainer" unique_id=459734166 instance=ExtResource("1_uiuyx")]
+layout_mode = 2
+
+[node name="CraftingSlot3" parent="GridContainer" unique_id=57484877 instance=ExtResource("1_uiuyx")]
+layout_mode = 2
+
+[node name="CraftingSlot4" parent="GridContainer" unique_id=2074566626 instance=ExtResource("1_uiuyx")]
+layout_mode = 2
+
+[node name="CraftingSlot5" parent="GridContainer" unique_id=228082737 instance=ExtResource("1_uiuyx")]
+layout_mode = 2
+
+[node name="CraftingSlot6" parent="GridContainer" unique_id=796720803 instance=ExtResource("1_uiuyx")]
+layout_mode = 2
+
+[node name="CraftingSlot7" parent="GridContainer" unique_id=2135068121 instance=ExtResource("1_uiuyx")]
+layout_mode = 2
+
+[node name="CraftingSlot8" parent="GridContainer" unique_id=77182852 instance=ExtResource("1_uiuyx")]
+layout_mode = 2
+
+[node name="CraftingSlot9" parent="GridContainer" unique_id=1528474879 instance=ExtResource("1_uiuyx")]
+layout_mode = 2

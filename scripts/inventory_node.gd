@@ -7,10 +7,7 @@ const INVENTORY_SLOT := preload("uid://b4v6j80gj158n")
 func _ready() -> void:
 	$GridContainer.columns = inventory_data.dims[0]
 	
-	for data in inventory_data.slot_datas:
-		var slot = INVENTORY_SLOT.instantiate()
-		slot.slot_data = data
-		$GridContainer.add_child(slot)
+	update_visuals()
 
 func get_valid_slot(item) -> int:
 	var first_empty_idx = -1
@@ -36,6 +33,7 @@ func add_item(item):
 	
 	if inventory_data.slot_datas[slot_idx]:
 		if inventory_data.slot_datas[slot_idx].item.title == item.item.title:
+			print(slot_idx)
 			inventory_data.slot_datas[slot_idx].amount += 1
 	else:
 		var data:SlotData = SlotData.new()
@@ -55,3 +53,9 @@ func update_visuals():
 		var slot = INVENTORY_SLOT.instantiate()
 		slot.slot_data = data
 		$GridContainer.add_child(slot)
+		slot.swapped.connect(_on_slot_swap)
+
+func _on_slot_swap(from: int, to: int):
+	var a = inventory_data.slot_datas[from]
+	inventory_data.slot_datas[from] = inventory_data.slot_datas[to]
+	inventory_data.slot_datas[to] = a

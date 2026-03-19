@@ -94,9 +94,16 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 32
 text = "E to collect"
 
-[node name="InventoryNode" parent="HUD" unique_id=17360702 instance=ExtResource("7_fjrip")]
+[node name="Inv" type="VBoxContainer" parent="HUD" unique_id=1975376117]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CraftingMenu" parent="HUD" unique_id=210753137 instance=ExtResource("8_smehm")]
-layout_mode = 1
-mouse_filter = 2
+[node name="InventoryNode" parent="HUD/Inv" unique_id=17360702 instance=ExtResource("7_fjrip")]
+layout_mode = 2
+
+[node name="CraftingMenu" parent="HUD/Inv" unique_id=210753137 instance=ExtResource("8_smehm")]
+layout_mode = 2

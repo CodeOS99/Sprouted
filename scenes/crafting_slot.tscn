@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b0mtqyuxbf0np"]
+
+[ext_resource type="Script" uid="uid://tvxqkvy7e640" path="res://scripts/crafting_slot.gd" id="1_m5iqw"]
+[ext_resource type="Texture2D" uid="uid://h0ake6u10bko" path="res://assets/crosshairs/crosshair186.png" id="2_xlbvh"]
+
+[node name="CraftingSlot" type="Panel" unique_id=2138595711]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_m5iqw")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1868719031]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xlbvh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=299043297]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+text = "0"

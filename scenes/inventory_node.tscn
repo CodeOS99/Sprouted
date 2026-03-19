@@ -4,10 +4,12 @@
 [ext_resource type="Resource" uid="uid://ck5vm5oiofjwv" path="res://resources/inventory/test_inventory.tres" id="2_d827i"]
 
 [node name="InventoryNode" type="Control" unique_id=17360702]
+custom_minimum_size = Vector2(405, 200)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.351
+anchor_bottom = 0.30900002
+offset_right = -0.35202026
+offset_bottom = -0.23200989
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -18,3 +20,76 @@ inventory_data = ExtResource("2_d827i")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+columns = 6
+
+[node name="Panel" type="Panel" parent="GridContainer" unique_id=1463407952]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="GridContainer" unique_id=1346997140]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel3" type="Panel" parent="GridContainer" unique_id=999984552]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel4" type="Panel" parent="GridContainer" unique_id=967656116]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel5" type="Panel" parent="GridContainer" unique_id=262730885]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel6" type="Panel" parent="GridContainer" unique_id=1360811250]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel7" type="Panel" parent="GridContainer" unique_id=594260414]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel8" type="Panel" parent="GridContainer" unique_id=1414160563]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel9" type="Panel" parent="GridContainer" unique_id=980018075]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel10" type="Panel" parent="GridContainer" unique_id=582127161]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel11" type="Panel" parent="GridContainer" unique_id=965785555]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel12" type="Panel" parent="GridContainer" unique_id=1022038145]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel13" type="Panel" parent="GridContainer" unique_id=1673072493]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel14" type="Panel" parent="GridContainer" unique_id=696848736]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel15" type="Panel" parent="GridContainer" unique_id=1730324715]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel16" type="Panel" parent="GridContainer" unique_id=813275090]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel17" type="Panel" parent="GridContainer" unique_id=1082225076]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Panel18" type="Panel" parent="GridContainer" unique_id=783042118]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2

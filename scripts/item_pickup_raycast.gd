@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		_not_looking()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pick_up"):
+	if Input.is_action_just_pressed("pick_up") and looking_at:
 		Globals.player.inventory.add_item(prev_body)
 
 func _not_looking():

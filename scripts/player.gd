@@ -24,7 +24,8 @@ var bob_amps = {}
 
 var can_turn := true
 
-@onready var inventory: InventoryNode = $HUD/InventoryNode
+@onready var inventory: InventoryNode = $HUD/Inv/InventoryNode
+@onready var crafting_menu: Control = $HUD/Inv/CraftingMenu
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -44,8 +45,8 @@ func _process(delta: float) -> void:
 			right_hand_holding.get_child(0).reset()
 	
 	if Input.is_action_just_pressed("toggle_inventory"):
-		$HUD/InventoryNode.visible = not $HUD/InventoryNode.visible
-		if $HUD/InventoryNode.visible:
+		$HUD/Inv.visible = not $HUD/Inv.visible
+		if $HUD/Inv.visible:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			can_turn = false
 		else:

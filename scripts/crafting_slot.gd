@@ -1,6 +1,4 @@
-class_name InventorySlot extends Panel
-
-signal swapped(from: int, to: int)
+class_name CraftingSlot extends Panel
 
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var amt_label: Label = $Label
@@ -41,7 +39,7 @@ func is_empty():
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	if data == self:
 		return false
-	if data is InventorySlot or CraftingSlot:
+	if data is InventorySlot:
 		if not data.slot_data: # if an empty slot was dragged
 			return false
 		if self.is_empty(): # if the current slot doesn't have anything
@@ -62,9 +60,6 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	
 	self.update_visuals()
 	data.update_visuals()
-	
-	swapped.emit(data.get_index(), self.get_index())
-	
 
 func update_visuals():
 	if slot_data:
