@@ -1,12 +1,18 @@
 extends Control
 
+signal valid_recipe
+
 @export var recipes: AllCraftingRecipes
+
+@onready var craft_button = $HBoxContainer/CrafitngGrid/Button
+@onready var result_rect = $HBoxContainer/ResultContainer/PanelContainer/TextureRect
 
 var SIDE_LENGTH = 3
 
 func _process(delta: float) -> void:
 	var grid := curr_grid()
-	
+	craft_button.disabled = true
+	result_rect.texture = null
 	for recipe in recipes.recipes:
 		var used_slots = []
 		for i in range(len(grid)):
@@ -27,10 +33,14 @@ func _process(delta: float) -> void:
 						break
 				if not valid:
 					continue
-				print("valid recipe!")
+				
+				craft_button.disabled = false
+			else:
+				continue
+			result_rect.texture = recipe.result.texture
 
 func curr_grid() -> Array[ItemData]:
 	var grid: Array[ItemData] = []
-	for child in $VBoxContainer/GridContainer.get_children():
+	for child in $HBoxContainer/CrafitngGrid/GridContainer.get_children():
 		grid.append(null if not child.slot_data else child.slot_data.item)
 	return grid

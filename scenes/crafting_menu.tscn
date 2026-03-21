@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://defs44pw3ahmv" path="res://scripts/crafting_menu.gd" id="1_8qu5l"]
 [ext_resource type="PackedScene" uid="uid://b0mtqyuxbf0np" path="res://scenes/crafting_slot.tscn" id="1_uiuyx"]
 [ext_resource type="Resource" uid="uid://din0mutlj3wnv" path="res://resources/crafting/all_crafting_recipes.tres" id="2_udled"]
+[ext_resource type="Texture2D" uid="uid://h0ake6u10bko" path="res://assets/crosshairs/crosshair186.png" id="4_megae"]
 
 [node name="CraftingMenu" type="Control" unique_id=210753137]
 layout_mode = 3
@@ -13,42 +14,68 @@ grow_vertical = 2
 script = ExtResource("1_8qu5l")
 recipes = ExtResource("2_udled")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1604440936]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2085381132]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/separation = 16
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=625180817]
+[node name="CrafitngGrid" type="VBoxContainer" parent="HBoxContainer" unique_id=1604440936]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/CrafitngGrid" unique_id=625180817]
 layout_mode = 2
 columns = 3
 
-[node name="CraftingSlot" parent="VBoxContainer/GridContainer" unique_id=2138595711 instance=ExtResource("1_uiuyx")]
+[node name="CraftingSlot" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=2138595711 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
 
-[node name="CraftingSlot2" parent="VBoxContainer/GridContainer" unique_id=459734166 instance=ExtResource("1_uiuyx")]
+[node name="CraftingSlot2" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=459734166 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
 
-[node name="CraftingSlot3" parent="VBoxContainer/GridContainer" unique_id=57484877 instance=ExtResource("1_uiuyx")]
+[node name="CraftingSlot3" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=57484877 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
 
-[node name="CraftingSlot4" parent="VBoxContainer/GridContainer" unique_id=2074566626 instance=ExtResource("1_uiuyx")]
+[node name="CraftingSlot4" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=2074566626 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
 
-[node name="CraftingSlot5" parent="VBoxContainer/GridContainer" unique_id=228082737 instance=ExtResource("1_uiuyx")]
+[node name="CraftingSlot5" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=228082737 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
 
-[node name="CraftingSlot6" parent="VBoxContainer/GridContainer" unique_id=796720803 instance=ExtResource("1_uiuyx")]
+[node name="CraftingSlot6" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=796720803 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
 
-[node name="CraftingSlot7" parent="VBoxContainer/GridContainer" unique_id=2135068121 instance=ExtResource("1_uiuyx")]
+[node name="CraftingSlot7" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=2135068121 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
 
-[node name="CraftingSlot8" parent="VBoxContainer/GridContainer" unique_id=77182852 instance=ExtResource("1_uiuyx")]
+[node name="CraftingSlot8" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=77182852 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
 
-[node name="CraftingSlot9" parent="VBoxContainer/GridContainer" unique_id=1528474879 instance=ExtResource("1_uiuyx")]
+[node name="CraftingSlot9" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=1528474879 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=350346842]
+[node name="Button" type="Button" parent="HBoxContainer/CrafitngGrid" unique_id=350346842]
 layout_mode = 2
 text = "CRAFT"
+
+[node name="ResultContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=548612034]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/ResultContainer" unique_id=378526711]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ResultContainer/PanelContainer" unique_id=159724912]
+layout_mode = 2
+texture = ExtResource("4_megae")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/ResultContainer" unique_id=1259992578]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "RESULT"

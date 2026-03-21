@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://beb1ny5psepmd"]
+
+[ext_resource type="Script" uid="uid://dqotofq0kbye" path="res://scripts/item_data.gd" id="1_jvjgn"]
+[ext_resource type="Texture2D" uid="uid://dhg3ercbhfgoe" path="res://assets/inventory_item_images/stickResource.png" id="2_b657f"]
+
+[resource]
+script = ExtResource("1_jvjgn")
+title = "Stick"
+description = "loong wood"
+texture = ExtResource("2_b657f")
+metadata/_custom_type_script = "uid://dqotofq0kbye"

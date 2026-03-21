@@ -8,3 +8,4 @@ class_name CraftingRecipe extends Resource
 # log
 # log
 # like stick in minecraft
+@export var result: ItemData
