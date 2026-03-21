@@ -1,6 +1,6 @@
 class_name InventorySlot extends Panel
 
-signal swapped(from: int, to: int)
+signal swapped(from: int, to: int) # -1 indicates out of scope for this slot, eg inv -> crafting
 
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var amt_label: Label = $Label

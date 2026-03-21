@@ -39,7 +39,7 @@ func is_empty():
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	if data == self:
 		return false
-	if data is InventorySlot:
+	if data is InventorySlot or CraftingSlot:
 		if not data.slot_data: # if an empty slot was dragged
 			return false
 		if self.is_empty(): # if the current slot doesn't have anything
@@ -60,6 +60,9 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	
 	self.update_visuals()
 	data.update_visuals()
+	
+	data.swapped.emit(data.get_index(), -1) # NOTE!!! THIS IS CRAFTING_SLOT! NOT INVENTORY_SLOT
+	
 
 func update_visuals():
 	if slot_data:

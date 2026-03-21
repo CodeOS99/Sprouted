@@ -33,7 +33,6 @@ func add_item(item):
 	
 	if inventory_data.slot_datas[slot_idx]:
 		if inventory_data.slot_datas[slot_idx].item.title == item.item.title:
-			print(slot_idx)
 			inventory_data.slot_datas[slot_idx].amount += 1
 	else:
 		var data:SlotData = SlotData.new()
@@ -56,6 +55,19 @@ func update_visuals():
 		slot.swapped.connect(_on_slot_swap)
 
 func _on_slot_swap(from: int, to: int):
-	var a = inventory_data.slot_datas[from]
-	inventory_data.slot_datas[from] = inventory_data.slot_datas[to]
-	inventory_data.slot_datas[to] = a
+	if to != -1:
+		var a = inventory_data.slot_datas[from]
+		var b = inventory_data.slot_datas[to]
+		inventory_data.slot_datas[from] = inventory_data.slot_datas[to]
+		inventory_data.slot_datas[to] = a
+		if b:
+			if a.item.title == b.item.title:
+				var transfer_amount = min(a.amount + b.amount, a.item.max_stack)
+				a.amount -= (transfer_amount - self.slot_data.amount)
+				b.amount = transfer_amount
+		else:
+			b = a
+		a = null
+
+	else:
+		inventory_data.slot_datas[from] = null
