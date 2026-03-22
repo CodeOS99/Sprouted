@@ -12,6 +12,7 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_8qu5l")
 recipes = ExtResource("2_udled")
 
@@ -19,41 +20,53 @@ recipes = ExtResource("2_udled")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 theme_override_constants/separation = 16
 
 [node name="CrafitngGrid" type="VBoxContainer" parent="HBoxContainer" unique_id=1604440936]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/CrafitngGrid" unique_id=625180817]
 layout_mode = 2
+mouse_filter = 2
 columns = 3
 
 [node name="CraftingSlot" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=2138595711 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="CraftingSlot2" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=459734166 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="CraftingSlot3" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=57484877 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="CraftingSlot4" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=2074566626 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="CraftingSlot5" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=228082737 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="CraftingSlot6" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=796720803 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="CraftingSlot7" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=2135068121 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="CraftingSlot8" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=77182852 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="CraftingSlot9" parent="HBoxContainer/CrafitngGrid/GridContainer" unique_id=1528474879 instance=ExtResource("1_uiuyx")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="CraftButton" type="Button" parent="HBoxContainer/CrafitngGrid" unique_id=350346842]
 layout_mode = 2

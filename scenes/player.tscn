@@ -103,6 +103,7 @@ offset_right = 390.92004
 offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="InventoryNode" parent="HUD/Inv" unique_id=17360702 instance=ExtResource("7_fjrip")]
 layout_mode = 2

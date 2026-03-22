@@ -9,7 +9,7 @@ func _ready() -> void:
 	
 	update_visuals()
 
-func get_valid_slot(item) -> int:
+func get_valid_slot(item: ItemData) -> int:
 	var first_empty_idx = -1
 	for i in range(len(inventory_data.slot_datas)):
 		var slot_data = inventory_data.slot_datas[i]
@@ -17,7 +17,7 @@ func get_valid_slot(item) -> int:
 			if first_empty_idx == -1:
 				first_empty_idx = i
 			continue
-		if slot_data.item.title == item.item.title: # same item
+		if slot_data.item.title == item.title: # same item
 			if slot_data.amount == slot_data.item.max_stack: # already at max stack
 				continue
 			else:
@@ -25,23 +25,32 @@ func get_valid_slot(item) -> int:
 	
 	return first_empty_idx
 
-func add_item(item):
+func add_item(item: ItemData, amount: int = 1) -> bool:
+	if amount == 0:
+		update_visuals()
+		return true
+	
 	var slot_idx = get_valid_slot(item)
 	
 	if slot_idx == -1: # no valid place
-		return
-	
+		return false
+		
 	if inventory_data.slot_datas[slot_idx]:
-		if inventory_data.slot_datas[slot_idx].item.title == item.item.title:
-			inventory_data.slot_datas[slot_idx].amount += 1
-	else:
+		if inventory_data.slot_datas[slot_idx].item.title == item.title:
+			var remaining_amount = inventory_data.slot_datas[slot_idx].item.max_stack - inventory_data.slot_datas[slot_idx].amount
+			var possible_addition = min(amount, remaining_amount)
+			inventory_data.slot_datas[slot_idx].amount += possible_addition
+			
+			var residual_amount = amount - possible_addition
+			add_item(item, residual_amount)
+	else: # empty
 		var data:SlotData = SlotData.new()
-		data.item = item.item
-		data.amount = 1
+		data.item = item
+		data.amount = amount
 		inventory_data.slot_datas[slot_idx] = data
 	
 	update_visuals()
-	item.queue_free()
+	return true
 
 func update_visuals():
 	for child in $GridContainer.get_children():
@@ -72,3 +81,15 @@ func _on_slot_swap(from: int, to: int):
 		else:
 			b = a
 		a = null
+
+func max_additions(item: ItemData) -> int:
+	# returns the maximum amount of an item that can be added
+	var ans = 0
+	for slot_data in inventory_data.slot_datas:
+		if not slot_data:
+			ans += item.max_stack
+			continue
+		if slot_data.item == item:
+			ans += item.max_stack - slot_data.amount
+	
+	return ans

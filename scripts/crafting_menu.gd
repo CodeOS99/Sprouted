@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	var grid := curr_grid()
 	
 	# reset the result container.
-	craft_button.disabled = true
+	craft_button.disabled = false
 	result_rect.texture = null
 	result_amount_label.text = ""
 	
@@ -79,7 +79,6 @@ func _process(delta: float) -> void:
 			# the pattern is matched, but there may be extra items
 			
 			var nothing_extra = true
-			print(used_slots)
 			for j in range(len(grid)):
 				if j not in used_slots:
 					if grid[j]:
@@ -89,9 +88,11 @@ func _process(delta: float) -> void:
 			if nothing_extra:
 				craft_button.disabled = false
 				result_rect.texture = recipe.result.texture
-				result_amount_label.text = str(recipe.result_amount)
+				result_amount_label.text = "x" + str(recipe.result_amount)
+				
 				curr_valid_recipe = recipe
-			
+				curr_recipe_start = prev_recipe_start
+				
 				break
 			else:
 				continue

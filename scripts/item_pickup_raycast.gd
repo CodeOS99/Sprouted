@@ -22,7 +22,8 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pick_up") and looking_at:
-		Globals.player.inventory.add_item(prev_body)
+		if Globals.player.inventory.add_item(prev_body.item):
+			prev_body.queue_free()
 
 func _not_looking():
 	$"../../../HUD/TextureRect".modulate = Color(1.0, 1.0, 1.0, 1.0)
