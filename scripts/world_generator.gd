@@ -9,10 +9,18 @@ var noise: FastNoiseLite
 var chunks = {}
 var last_player_chunk := Vector2i(999999, 999999)
 
+var tree := preload("res://scenes/tree_long.tscn")
+
+var obj_noise: FastNoiseLite
+
 func _ready() -> void:
 	noise = FastNoiseLite.new()
 	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
 	noise.frequency = 0.01 # lower for smoother
+	
+	obj_noise = FastNoiseLite.new()
+	obj_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
+	obj_noise.frequency = 0.18 # higher for more scattered
 	
 	generate_chunks()
 
@@ -70,8 +78,28 @@ func generate_chunk(chunk_x: int, chunk_z: int) -> Node3D:
 	mesh_instance.add_child(body)
 	
 	add_child(mesh_instance)
-	
+	spawn_objects(chunk_x, chunk_z, mesh_instance)
 	return mesh_instance
+
+func spawn_objects(chunk_x: int, chunk_z: int, parent: Node3D):
+	for x in range(SIZE):
+		for z in range(SIZE):
+			var world_x = x + chunk_x * SIZE
+			var world_z = z + chunk_z * SIZE
+			
+			var height = noise.get_noise_2d(world_x, world_z) * HEIGHT_SCALE
+			
+			if height <= 0:
+				continue
+			
+			var n = obj_noise.get_noise_2d(world_x, world_z)
+			if n > 0.65:
+				spawn_tree(x, height, z, parent)  # local x/z, not world!
+
+func spawn_tree(x, y, z, parent):
+	var tree_instance = tree.instantiate()
+	tree_instance.position = Vector3(x, y, z)
+	parent.add_child(tree_instance)
 
 func add_quad(st: SurfaceTool, x: int, z: int, chunk_x: int, chunk_z: int):
 	var world_x = x + chunk_x * SIZE
