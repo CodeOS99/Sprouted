@@ -2,9 +2,9 @@ class_name CraftingSlot extends Panel
 # TODO! NOTE! HARDCODE INTERACTIONS FOR NOW
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var amt_label: Label = $Label
-
 var slot_data: SlotData
-
+var craft_shift := false
+var craft_ctrl := false
 func _ready() -> void:
 	if slot_data:
 		texture_rect.texture = slot_data.item.texture
@@ -12,11 +12,11 @@ func _ready() -> void:
 	else:
 		texture_rect.texture = null
 		amt_label.text = ""
-
 func _get_drag_data(at_position: Vector2) -> Variant:
+	craft_shift = Input.is_action_pressed("take_half")
+	craft_ctrl = Input.is_action_pressed("take_one")
 	set_drag_preview(make_drag_preview(at_position))
 	return self
-
 func make_drag_preview(at_position: Vector2) -> Control:
 	if is_empty():
 		return
@@ -27,15 +27,17 @@ func make_drag_preview(at_position: Vector2) -> Control:
 	t.custom_minimum_size = self.size
 	t.modulate.a = 0.5
 	t.position = -at_position
-	
+
+	var label := Label.new()
+	label.text = "x%d" % (1 if craft_ctrl else ceil(slot_data.amount / 2.0) if craft_shift else slot_data.amount)
+	t.add_child(label)
+
 	var c = Control.new()
 	c.add_child(t)
 	
 	return c
-
 func is_empty():
 	return slot_data == null
-
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	if data == self:
 		return false
@@ -47,36 +49,40 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 		if self.slot_data.item.title == data.slot_data.item.title: # occupied but same item
 			return true
 	return false
-
 func _drop_data(at_position: Vector2, data: Variant) -> void:
 	if data is InventorySlot or data is HotbarSlot:
 		if self.slot_data:
 			if self.slot_data.item.title == data.slot_data.item.title:
-				var transfer_amount = min(self.slot_data.amount + data.slot_data.amount, slot_data.item.max_stack)
+				var transfer_amount = min(self.slot_data.amount + (1 if data.craft_ctrl else ceil(data.slot_data.amount / 2.0) if data.craft_shift else data.slot_data.amount), slot_data.item.max_stack)
 				data.slot_data.amount -= (transfer_amount - self.slot_data.amount)
 				self.slot_data.amount = transfer_amount
 		else:
-			self.slot_data = data.slot_data
-		data.slot_data = null
+			self.slot_data = data.slot_data.duplicate()
+			self.slot_data.amount = (1 if data.craft_ctrl else ceil(data.slot_data.amount / 2.0) if data.craft_shift else data.slot_data.amount)
+			data.slot_data.amount -= (1 if data.craft_ctrl else ceil(data.slot_data.amount / 2.0) if data.craft_shift else data.slot_data.amount)
+		if data.slot_data.amount <= 0:
+			data.slot_data = null
 		
 		self.update_visuals()
 		data.update_visuals()
 		
 		if data is InventorySlot:
-			data.swapped.emit(data.get_index(), -1) # NOTE!!! THIS IS CRAFTING_SLOT! NOT INVENTORY_SLOT
+			data.swapped.emit(data.get_index(), -1)
 	elif data is CraftingSlot and data.get_parent() == self.get_parent(): # same grid
 		if self.slot_data:
 			if self.slot_data.item.title == data.slot_data.item.title:
-				var transfer_amount = min(self.slot_data.amount + data.slot_data.amount, slot_data.item.max_stack)
+				var transfer_amount = min(self.slot_data.amount + (1 if data.craft_ctrl else ceil(data.slot_data.amount / 2.0) if data.craft_shift else data.slot_data.amount), slot_data.item.max_stack)
 				data.slot_data.amount -= (transfer_amount - self.slot_data.amount)
 				self.slot_data.amount = transfer_amount
 		else:
-			self.slot_data = data.slot_data
-		data.slot_data = null
+			self.slot_data = data.slot_data.duplicate()
+			self.slot_data.amount = (1 if data.craft_ctrl else ceil(data.slot_data.amount / 2.0) if data.craft_shift else data.slot_data.amount)
+			data.slot_data.amount -= (1 if data.craft_ctrl else ceil(data.slot_data.amount / 2.0) if data.craft_shift else data.slot_data.amount)
+		if data.slot_data.amount <= 0:
+			data.slot_data = null
 		
 		self.update_visuals()
 		data.update_visuals()
-
 func update_visuals():
 	if slot_data:
 		texture_rect.texture = slot_data.item.texture
@@ -84,7 +90,6 @@ func update_visuals():
 	else:
 		texture_rect.texture = null
 		amt_label.text = ""
-
 func remove_item(amount: int):
 	if self.slot_data:
 		self.slot_data.amount -= amount
