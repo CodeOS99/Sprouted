@@ -3,7 +3,7 @@ class_name HotbarSlot extends Panel
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var amt_label: Label = $Label
 
-var slot_data: SlotData
+@export var slot_data: SlotData
 
 func _ready() -> void:
 	if slot_data:

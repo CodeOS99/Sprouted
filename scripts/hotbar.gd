@@ -1,4 +1,4 @@
-extends Control
+class_name Hotbar extends Control
 
 var active_slot_idx := 0
 
@@ -21,3 +21,6 @@ func set_active_slot(index: int):
 	active_slot.add_theme_stylebox_override("panel", style)
 	
 	active_slot_idx = index
+
+func get_active_item() -> ItemData:
+	return null if not $HBoxContainer.get_child(active_slot_idx).slot_data else $HBoxContainer.get_child(active_slot_idx).slot_data.item

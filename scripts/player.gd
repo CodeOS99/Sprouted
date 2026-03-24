@@ -13,9 +13,12 @@ const FOV_CHANGE = 1.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8*2
 
-@onready var head = $Head
-@onready var camera = $Head/Camera3D
+@onready var head: Node3D = $Head
+@onready var camera: Camera3D = $Head/Camera3D
 @onready var right_hand_holding = $Head/Camera3D/Hands/HandRight/Holding
+@onready var hotbar: Hotbar = $HUD/Hotbar
+@onready var inventory: InventoryNode = $HUD/Inv/InventoryNode
+@onready var crafting_menu: Control = $HUD/Inv/CraftingMenu
 
 # for additional bobbing things
 var additional_bobbers: Array[Node3D] = []
@@ -24,8 +27,7 @@ var bob_amps = {}
 
 var can_turn := true
 
-@onready var inventory: InventoryNode = $HUD/Inv/InventoryNode
-@onready var crafting_menu: Control = $HUD/Inv/CraftingMenu
+var updated_held_once = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -48,6 +50,8 @@ func _process(delta: float) -> void:
 				if right_hand_holding.get_child(0).is_in_group("usable"):
 					right_hand_holding.get_child(0).reset()
 	
+	update_held_item()
+	
 	if Input.is_action_just_pressed("toggle_inventory"):
 		$HUD/Inv.visible = not $HUD/Inv.visible
 		if $HUD/Inv.visible:
@@ -56,6 +60,22 @@ func _process(delta: float) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			can_turn = true
+
+# TODO do sum w this ;-;
+func update_held_item():
+	var item := hotbar.get_active_item()
+	
+	if item:
+		if updated_held_once:
+			$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
+		
+		var instance = item.mesh.instantiate()
+		instance.scale = Vector3(item.mesh_scale, item.mesh_scale, item.mesh_scale)
+		$Head/Camera3D/Hands/HandRight/Holding.add_child(instance)
+		$Head/Camera3D/Hands/HandRight/Holding.move_child(instance, 0)
+		
+		if not updated_held_once:
+			updated_held_once = true
 
 func _physics_process(delta):
 	# Add the gravity.
