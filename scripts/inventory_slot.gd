@@ -41,7 +41,7 @@ func is_empty():
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	if data == self:
 		return false
-	if data is InventorySlot or CraftingSlot:
+	if data is InventorySlot or data is CraftingSlot or data is HotbarSlot:
 		if not data.slot_data: # if an empty slot was dragged
 			return false
 		if self.is_empty(): # if the current slot doesn't have anything
@@ -65,7 +65,7 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 		data.update_visuals()
 		
 		swapped.emit(data.get_index(), self.get_index())
-	elif data is CraftingSlot:
+	elif data is CraftingSlot or data is HotbarSlot:
 		if self.slot_data:
 			if self.slot_data.item.title == data.slot_data.item.title:
 				var transfer_amount = min(self.slot_data.amount + data.slot_data.amount, slot_data.item.max_stack)

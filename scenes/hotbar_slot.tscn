@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://1bcjvxipbhq4"]
+
+[ext_resource type="Texture2D" uid="uid://h0ake6u10bko" path="res://assets/crosshairs/crosshair186.png" id="1_ea3t7"]
+[ext_resource type="Script" uid="uid://dh1o1rc0ax22e" path="res://scripts/hotbar_slot.gd" id="1_sheke"]
+
+[node name="hotbar_slot" type="Panel" unique_id=633781146]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_sheke")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1317667419]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ea3t7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=39363083]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 16
+text = "0"

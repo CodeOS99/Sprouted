@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dwjsj5fg723p5" path="res://scripts/item_pickup_raycast.gd" id="4_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://id52tg434msp" path="res://scenes/inventory_node.tscn" id="7_fjrip"]
 [ext_resource type="PackedScene" uid="uid://dqsd06vdicy1a" path="res://scenes/crafting_menu.tscn" id="8_smehm"]
+[ext_resource type="PackedScene" uid="uid://dmpvhi8tyd2lw" path="res://scenes/hotbar.tscn" id="9_ur7pv"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
 
@@ -112,3 +113,15 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 2
+
+[node name="Hotbar" parent="HUD" unique_id=929065246 instance=ExtResource("9_ur7pv")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -398.0
+offset_top = -218.025
+offset_right = 398.0
+offset_bottom = -8.025635
+grow_vertical = 0

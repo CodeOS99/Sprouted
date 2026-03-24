@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 	obj_noise = FastNoiseLite.new()
 	obj_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
-	obj_noise.frequency = 0.18 # higher for more scattered
+	obj_noise.frequency = 0.8 # higher for more scattered
 	
 	generate_chunks()
 

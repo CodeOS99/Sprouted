@@ -1,4 +1,4 @@
-class_name CraftingSlot extends Panel
+class_name HotbarSlot extends Panel
 # TODO! NOTE! HARDCODE INTERACTIONS FOR NOW
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var amt_label: Label = $Label
@@ -49,7 +49,7 @@ func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	return false
 
 func _drop_data(at_position: Vector2, data: Variant) -> void:
-	if data is InventorySlot or data is HotbarSlot:
+	if data is InventorySlot:
 		if self.slot_data:
 			if self.slot_data.item.title == data.slot_data.item.title:
 				var transfer_amount = min(self.slot_data.amount + data.slot_data.amount, slot_data.item.max_stack)
@@ -62,9 +62,8 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 		self.update_visuals()
 		data.update_visuals()
 		
-		if data is InventorySlot:
-			data.swapped.emit(data.get_index(), -1) # NOTE!!! THIS IS CRAFTING_SLOT! NOT INVENTORY_SLOT
-	elif data is CraftingSlot and data.get_parent() == self.get_parent(): # same grid
+		data.swapped.emit(data.get_index(), -1)
+	elif data is CraftingSlot or data is HotbarSlot:
 		if self.slot_data:
 			if self.slot_data.item.title == data.slot_data.item.title:
 				var transfer_amount = min(self.slot_data.amount + data.slot_data.amount, slot_data.item.max_stack)
