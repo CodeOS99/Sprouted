@@ -10,6 +10,7 @@ var chunks = {}
 var last_player_chunk := Vector2i(999999, 999999)
 
 var tree := preload("res://scenes/tree_long.tscn")
+var small_stone := preload("res://scenes/small_stone.tscn")
 
 var obj_noise: FastNoiseLite
 
@@ -94,12 +95,14 @@ func spawn_objects(chunk_x: int, chunk_z: int, parent: Node3D):
 			
 			var n = obj_noise.get_noise_2d(world_x, world_z)
 			if n > 0.65:
-				spawn_tree(x, height, z, parent)  # local x/z, not world!
+				spawn_object(x, height, z, parent, tree)  # local x/z, not world!
+			if 0.4 <= n and n <= 0.42:
+				spawn_object(x, height, z, parent, small_stone)
 
-func spawn_tree(x, y, z, parent):
-	var tree_instance = tree.instantiate()
-	tree_instance.position = Vector3(x, y, z)
-	parent.add_child(tree_instance)
+func spawn_object(x, y, z, parent, obj):
+	var instance = obj.instantiate()
+	instance.position = Vector3(x, y, z)
+	parent.add_child(instance)
 
 func add_quad(st: SurfaceTool, x: int, z: int, chunk_x: int, chunk_z: int):
 	var world_x = x + chunk_x * SIZE
