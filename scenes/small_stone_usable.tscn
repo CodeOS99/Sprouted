@@ -106,37 +106,6 @@ shape = SubResource("ConvexPolygonShape3D_xo5q0")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=248418250]
 libraries/ = SubResource("AnimationLibrary_xo5q0")
 
-[node name="Control" type="Control" parent="." unique_id=1261223162]
-layout_mode = 3
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 89.0
-grow_horizontal = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="Control" unique_id=640737858]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -126.0
-offset_right = 136.0
-offset_bottom = 27.0
-grow_horizontal = 2
-step = 1.0
-value = 100.0
-show_percentage = false
-
-[node name="Label" type="Label" parent="Control/ProgressBar" unique_id=1547492876]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "Durability"
-
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="simple_stone"]
