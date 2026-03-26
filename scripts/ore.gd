@@ -2,13 +2,13 @@ extends StaticBody3D
 
 @onready var mesh = $"mesh"
 
-var popout_mineral = preload("res://scenes/popout_raw_iron.tscn")
+var popout_minerals = [preload("res://scenes/popout_raw_iron.tscn"), preload("res://scenes/popout_coal.tscn")]
 
 const MAX_HEALTH: float = 20.0
 var health: int = MAX_HEALTH
 
 func spawn_mineral():
-	var mineral := popout_mineral.instantiate()
+	var mineral = popout_minerals.pick_random().instantiate()
 	get_tree().root.add_child(mineral)
 	mineral.global_position = $MineralPoint.global_position
 

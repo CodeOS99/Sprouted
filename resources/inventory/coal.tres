@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b3i6ricnollh5"]
+
+[ext_resource type="PackedScene" uid="uid://genlh6sw2amj" path="res://assets/coal/coal.blend" id="1_15p3g"]
+[ext_resource type="Script" uid="uid://dqotofq0kbye" path="res://scripts/item_data.gd" id="1_qsboa"]
+[ext_resource type="Texture2D" uid="uid://c2wm64wxyssln" path="res://assets/inventory_item_images/coal.png" id="3_re4ba"]
+
+[resource]
+script = ExtResource("1_qsboa")
+title = "Coal"
+description = "Fuel!"
+texture = ExtResource("3_re4ba")
+mesh = ExtResource("1_15p3g")
+mesh_scale = 0.2
+metadata/_custom_type_script = "uid://dqotofq0kbye"
