@@ -3,6 +3,8 @@ extends Node3D
 @export var outline_mesh: MeshInstance3D
 @export var item: ItemData
 
+var usable_instance # set by hotbar(hopefully :skulk:)
+
 var using = false
 
 func _ready() -> void:
