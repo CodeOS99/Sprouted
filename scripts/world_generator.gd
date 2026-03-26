@@ -11,6 +11,7 @@ var last_player_chunk := Vector2i(999999, 999999)
 
 var tree := preload("res://scenes/tree_long.tscn")
 var small_stone := preload("res://scenes/small_stone_collectible.tscn")
+var iron_ore := preload("res://scenes/iron_ore.tscn")
 
 var obj_noise: FastNoiseLite
 
@@ -98,6 +99,8 @@ func spawn_objects(chunk_x: int, chunk_z: int, parent: Node3D):
 				spawn_object(x, height, z, parent, tree)  # local x/z, not world!
 			if 0.4 <= n and n <= 0.42:
 				spawn_object(x, height, z, parent, small_stone)
+			if .2 <= n and n < .2011:
+				spawn_object(x, height, z, parent, iron_ore)
 
 func spawn_object(x, y, z, parent, obj):
 	var instance = obj.instantiate()
@@ -148,4 +151,4 @@ func get_color(height: float) -> Color:
 	elif height < 4:
 		return Color(0.3, 0.3, 0.3, 1.0)
 	else:
-		return Color(0.0, 0.396, 0.0, 1.0)
+		return Color(0.0, 0.396, 0.0, 1.0) # this is mostly so that godot doesnt scream at me :P

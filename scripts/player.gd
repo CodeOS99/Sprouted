@@ -82,7 +82,8 @@ func update_held_item():
 			
 	if item:
 		if updated_held_once:
-			$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
+			if $Head/Camera3D/Hands/HandRight/Holding.get_child(0):
+				$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
 		
 		var instance = item.mesh.instantiate()
 		instance.scale = Vector3(item.mesh_scale, item.mesh_scale, item.mesh_scale)

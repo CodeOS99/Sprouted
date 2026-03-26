@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@onready var mesh = $"tree-tall2"
+@onready var mesh = $"mesh"
 
 var popout_log = preload("res://scenes/popout_log.tscn")
 

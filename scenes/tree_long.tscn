@@ -11,7 +11,7 @@ radius = 0.3095703
 collision_layer = 3
 script = ExtResource("1_rivfm")
 
-[node name="tree-tall2" parent="." unique_id=608403100 instance=ExtResource("1_ofcrn")]
+[node name="mesh" parent="." unique_id=608403100 instance=ExtResource("1_ofcrn")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1504227507]
