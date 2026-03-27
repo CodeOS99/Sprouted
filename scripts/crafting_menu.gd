@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	curr_recipe_start = -1
 	
 	var prev_recipe_start = -1
-	
+	#print(grid)
 	for recipe in recipes.recipes:
 		var used_slots: Array[int]
 		if curr_valid_recipe:

@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://bpy5gej2uhlcl"]
+
+[ext_resource type="Script" uid="uid://cwuc2egieidna" path="res://scripts/axe_tool.gd" id="1_3xlsu"]
+[ext_resource type="PackedScene" uid="uid://px30ieeu47bn" path="res://assets/kenneysSurvivalKit/GLB format/tool-axe-upgraded.glb" id="1_dysr7"]
+
+[sub_resource type="Animation" id="Animation_3xlsu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.012291, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dysr7"]
+resource_name = "lmb"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1, 1.4, 2),
+"transitions": PackedFloat32Array(1, 2, 0.5, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.012291, 0), Vector3(-0.38397244, -1.012291, 1.2042772), Vector3(-1.5707964, 0, 0), Vector3(-1.5009831, 1.4486233, 0), Vector3(0, -1.012291, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.39999998, 1, 1.4, 2),
+"transitions": PackedFloat32Array(1, 2, 0.5, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.101, 0, 0), Vector3(-1, 0, 0), Vector3(-1, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3xlsu"]
+_data = {
+&"RESET": SubResource("Animation_3xlsu"),
+&"lmb": SubResource("Animation_dysr7")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dysr7"]
+size = Vector3(0.14453125, 0.90478516, 0.15631104)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xlsu"]
+size = Vector3(0.5842285, 0.25628662, 0.056274414)
+
+[node name="BetterAxe" type="Node3D" unique_id=273176150 node_paths=PackedStringArray("particle_point") groups=["usable"]]
+transform = Transform3D(0.52991927, 0, -0.8480481, 0, 1, 0, 0.8480481, 0, 0.52991927, 0, 0, 0)
+script = ExtResource("1_3xlsu")
+damage_per_swing = 4
+particle_point = NodePath("tool-axe-upgraded2/ParticlePoint")
+max_per_swing = 10
+
+[node name="tool-axe-upgraded2" parent="." unique_id=1285649671 instance=ExtResource("1_dysr7")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="ParticlePoint" type="Node3D" parent="tool-axe-upgraded2" unique_id=1418095045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07437809, 0.22266139, 0.0035528578)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1233713552]
+libraries/ = SubResource("AnimationLibrary_3xlsu")
+speed_scale = 2.0
+
+[node name="Area3D" type="Area3D" parent="." unique_id=867198729]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=957864884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016585916, 0.38360786, -0.018116875)
+shape = SubResource("BoxShape3D_dysr7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=614723082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0064697303, 0.8924866, 0.012390155)
+shape = SubResource("BoxShape3D_3xlsu")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+
+[editable path="tool-axe-upgraded2"]
