@@ -103,6 +103,7 @@ libraries/ = SubResource("AnimationLibrary_uyd1n")
 
 [node name="Eat" type="AudioStreamPlayer" parent="BreadUsable" unique_id=1672098995]
 stream = ExtResource("3_uqe7r")
+volume_db = 10.0
 
 [connection signal="animation_finished" from="BreadUsable/AnimationPlayer" to="BreadUsable" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="BreadUsable/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

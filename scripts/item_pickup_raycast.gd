@@ -5,7 +5,6 @@ var looking_at := false
 
 func _physics_process(delta: float) -> void:
 	if self.is_colliding():
-		print(1)
 		var body = self.get_collider()
 		if body.is_in_group("Collectible"):
 			$"../../../HUD/TextureRect".modulate = Color(1.0, 0.0, 0.0, 1.0)

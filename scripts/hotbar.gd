@@ -11,6 +11,10 @@ func _process(delta: float) -> void:
 	
 	for i in range(1, 10):
 		if Input.is_action_just_pressed("slot_%d" % i):
+			if Globals.player.curr_held_item:
+				if "using" in Globals.player.curr_held_item:
+					if Globals.player.curr_held_item.using:
+						break
 			set_active_slot(i-1)
 
 func set_active_slot(index: int):

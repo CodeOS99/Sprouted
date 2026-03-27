@@ -105,6 +105,7 @@ stream = ExtResource("3_qbwsa")
 
 [node name="AxeOnWoodCut" type="AudioStreamPlayer" parent="." unique_id=115641089]
 stream = ExtResource("4_p2vc7")
+volume_db = -8.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 

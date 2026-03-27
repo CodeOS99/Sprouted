@@ -187,6 +187,8 @@ pitch_scale = 2.0
 
 [node name="ItemPickup" type="AudioStreamPlayer" parent="." unique_id=1120723986]
 stream = ExtResource("13_jej6c")
+volume_db = 5.0
 
 [node name="Hurt" type="AudioStreamPlayer" parent="." unique_id=308296707]
 stream = ExtResource("14_f1ej7")
+volume_db = 10.749

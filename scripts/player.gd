@@ -85,7 +85,7 @@ func _process(delta: float) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			can_turn = true
 
-	if hunger_bar.value > 80.0:
+	if hunger_bar.value > 85.0:
 		hunger_damage_curr += delta
 		if hunger_damage_curr > hunger_damage_interval:
 			hunger_damage_curr = 0
@@ -105,13 +105,13 @@ func update_held_item():
 	
 	if item == null:
 		if curr_held_item:
-			if "can_delete" in curr_held_item:
-				if curr_held_item.can_delete:
-					if $Head/Camera3D/Hands/HandRight/Holding.get_child(0):
-						$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
-				else:
-					if $Head/Camera3D/Hands/HandRight/Holding.get_child(0):
-						$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
+			#if "can_delete" in curr_held_item:
+				#if curr_held_item.can_delete:
+					#if $Head/Camera3D/Hands/HandRight/Holding.get_child(0):
+						#$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
+				#else:
+			if $Head/Camera3D/Hands/HandRight/Holding.get_child(0):
+				$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
 			curr_held_item = item
 	if item:
 		if updated_held_once:

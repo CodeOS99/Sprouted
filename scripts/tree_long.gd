@@ -22,7 +22,6 @@ func chopped(damage: float) -> bool: # also return whether its chopped or not
 	self.mesh.scale.x-=(damage/MAX_HEALTH*4.0)
 	self.mesh.scale.y-=(damage/MAX_HEALTH*4.0)
 	self.mesh.scale.z-=(damage/MAX_HEALTH*4.0)
-	print(mesh.scale.x)
 	Globals.player.shake_camera()
 	
 	return self.mesh.scale.x <= 0
