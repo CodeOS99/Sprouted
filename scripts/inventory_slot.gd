@@ -113,3 +113,15 @@ func update_visuals():
 	else:
 		texture_rect.texture = null
 		amt_label.text = ""
+
+func _on_mouse_entered() -> void:
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.596, 0.596, 0.596, 0.5)
+	
+	self.add_theme_stylebox_override("panel", style)
+
+func _on_mouse_exited() -> void:
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.101, 0.101, 0.101, .63)
+	
+	self.add_theme_stylebox_override("panel", style)

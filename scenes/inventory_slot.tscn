@@ -3,10 +3,23 @@
 [ext_resource type="Script" uid="uid://jws8rinaasa1" path="res://scripts/inventory_slot.gd" id="1_1gb6j"]
 [ext_resource type="Texture2D" uid="uid://h0ake6u10bko" path="res://assets/crosshairs/crosshair186.png" id="1_x651h"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxqf6"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [node name="InventorySlot" type="Panel" unique_id=1307890221]
 custom_minimum_size = Vector2(64, 64)
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bxqf6")
 script = ExtResource("1_1gb6j")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=319518516]
@@ -26,3 +39,6 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 16
 text = "0"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
