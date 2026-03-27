@@ -24,3 +24,6 @@ func set_active_slot(index: int):
 
 func get_active_item() -> ItemData:
 	return null if not $HBoxContainer.get_child(active_slot_idx).slot_data else $HBoxContainer.get_child(active_slot_idx).slot_data.item
+
+func get_active_slot() -> HotbarSlot:
+	return $HBoxContainer.get_child(active_slot_idx)

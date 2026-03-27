@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cxhmly5bh04gy"]
+
+[ext_resource type="Script" uid="uid://b58i7fbithp10" path="res://scripts/bread_usable.gd" id="1_yenye"]
+[ext_resource type="PackedScene" uid="uid://0vjwcu3gmva" path="res://assets/bread/bread.blend" id="2_uqe7r"]
+
+[node name="BreadUsable" type="Node3D" unique_id=1997894584 groups=["needs_hotbar_ref", "usable"]]
+script = ExtResource("1_yenye")
+
+[node name="bread" parent="." unique_id=209030287 instance=ExtResource("2_uqe7r")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)

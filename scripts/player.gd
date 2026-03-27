@@ -83,9 +83,10 @@ func _process(delta: float) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			can_turn = true
-	
-	if hunger > 90.0:
+
+	if hunger_bar.value > 90.0:
 		take_damage(delta * 4)
+		print("hunger grater")
 	
 	if health <= 0:
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
@@ -100,7 +101,6 @@ func update_held_item():
 		if curr_held_item:
 			$Head/Camera3D/Hands/HandRight/Holding.get_child(0).queue_free()
 			curr_held_item = item
-			
 	if item:
 		if updated_held_once:
 			if $Head/Camera3D/Hands/HandRight/Holding.get_child(0):
@@ -110,6 +110,9 @@ func update_held_item():
 		instance.scale = Vector3(item.mesh_scale, item.mesh_scale, item.mesh_scale)
 		$Head/Camera3D/Hands/HandRight/Holding.add_child(instance)
 		$Head/Camera3D/Hands/HandRight/Holding.move_child(instance, 0)
+		
+		if "needs_hotbar_ref" in instance:
+			instance.hotbar_ref = hotbar.get_active_slot()
 		
 		if not updated_held_once:
 			updated_held_once = true
@@ -192,3 +195,5 @@ func take_damage(dmg: float):
 func get_hungry(hunger_addition: float):
 	hunger_bar.value += hunger_addition
 	hunger += hunger_addition
+	hunger = max(0, hunger)
+	hunger = min(hunger, max_hunger)

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dxj5ui2ae4v8v"]
+
+[ext_resource type="PackedScene" uid="uid://cxhmly5bh04gy" path="res://scenes/bread_usable.tscn" id="1_4g221"]
+[ext_resource type="Script" uid="uid://dqotofq0kbye" path="res://scripts/item_data.gd" id="1_f3hwu"]
+[ext_resource type="Texture2D" uid="uid://10f0h1ppk8hw" path="res://assets/inventory_item_images/bread.png" id="3_2bnho"]
+
+[resource]
+script = ExtResource("1_f3hwu")
+title = "Bread"
+description = "Made of wheat"
+texture = ExtResource("3_2bnho")
+mesh = ExtResource("1_4g221")
+needs_hotbar_ref = true
+metadata/_custom_type_script = "uid://dqotofq0kbye"
