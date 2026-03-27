@@ -150,7 +150,6 @@ offset_bottom = 52.0
 grow_horizontal = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_3v2ag")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jej6c")
-step = 1.0
 value = 100.0
 show_percentage = false
 script = ExtResource("10_jej6c")

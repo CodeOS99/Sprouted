@@ -83,6 +83,9 @@ func _process(delta: float) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			can_turn = true
+	
+	if hunger > 90.0:
+		take_damage(delta * 4)
 
 func update_held_item():
 	var item := hotbar.get_active_item()
@@ -183,5 +186,6 @@ func take_damage(dmg: float):
 	health -= dmg
 	health_bar.value = health
 
-func get_hungry(hunger: float):
-	hunger_bar.value += hunger
+func get_hungry(hunger_addition: float):
+	hunger_bar.value += hunger_addition
+	hunger += hunger_addition
