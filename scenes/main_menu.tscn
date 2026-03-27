@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://cajivwl5x40ah" path="res://scripts/play_button.gd" id="1_l6cm7"]
 [ext_resource type="Script" uid="uid://r2q7ftki63ei" path="res://scripts/quit_button.gd" id="2_ekxnf"]
 
+[sub_resource type="Gradient" id="Gradient_ekxnf"]
+colors = PackedColorArray(0, 0, 0.5019608, 1, 0.62036407, 0.49890977, 0.85761297, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bqqt6"]
+gradient = SubResource("Gradient_ekxnf")
+
 [node name="MainMenu" type="Control" unique_id=2131485573]
 layout_mode = 3
 anchors_preset = 15
@@ -10,6 +16,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=750010481]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_bqqt6")
 
 [node name="Panel" type="Panel" parent="." unique_id=800146040]
 layout_mode = 1
@@ -30,8 +46,13 @@ offset_bottom = 99.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0.9843137, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 72
-text = "Main Menu"
+text = "Sprouted"
+horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="Panel" unique_id=2031006725]
 layout_mode = 1

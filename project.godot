@@ -15,6 +15,10 @@ run/main_scene="uid://8fyltxhuv615"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://bn8m5xml5td67"
+
 [autoload]
 
 BgMusic="*uid://b7vencid3kwc3"
@@ -29,6 +33,10 @@ Tree=""
 Collectible=""
 usable=""
 Ore=""
+
+[gui]
+
+theme/custom_font="uid://cee7vopx6y24x"
 
 [input]
 

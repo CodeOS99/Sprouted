@@ -99,3 +99,17 @@ func remove_item(amount: int):
 		if self.slot_data.amount <= 0:
 			self.slot_data = null
 		update_visuals()
+func _on_mouse_entered() -> void:
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.596, 0.596, 0.596, 0.5)
+	self.add_theme_stylebox_override("panel", style)
+	
+	if slot_data:
+		tooltip_text = "%s\n%s" % [slot_data.item.title, slot_data.item.description]
+
+func _on_mouse_exited() -> void:
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.101, 0.101, 0.101, .63)
+	self.add_theme_stylebox_override("panel", style)
+	
+	tooltip_text = ""
