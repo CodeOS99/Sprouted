@@ -5,7 +5,7 @@ var hotbar_ref: HotbarSlot
 var using = false
 var can_delete: bool = false
 
-var hunger_cost = -5 # not sure if this is a good way to do this
+var hunger_cost = -20 # not sure if this is a good way to do this
 # certainly the one which uses the smallest amount of lines :P
 
 func use() -> void:

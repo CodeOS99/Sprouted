@@ -24,6 +24,10 @@ buses/default_bus_layout="uid://bn8m5xml5td67"
 
 BgMusic="*uid://b7vencid3kwc3"
 
+[display]
+
+mouse_cursor/custom_image="uid://cmw6k0yorg21w"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")

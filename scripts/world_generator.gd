@@ -108,7 +108,7 @@ func spawn_objects(chunk_x: int, chunk_z: int, parent: Node3D):
 				spawn_object(x, height, z, parent, tree)  # local x/z, not world!
 			if 0.4 <= n and n <= 0.42:
 				spawn_object(x, height, z, parent, small_stone)
-			if .2 <= n and n < .2011:
+			if .2 <= n and n < .2111:
 				spawn_object(x, height, z, parent, iron_ore)
 
 func spawn_object(x, y, z, parent, obj):

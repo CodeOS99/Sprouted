@@ -38,7 +38,7 @@ var footstep_players: Array
 
 var max_health := 100.0
 
-var max_hunger := 100.0
+var max_hunger := 200.0
 
 var hunger_damage_interval = 1.25
 var hunger_damage_curr = 0.0
