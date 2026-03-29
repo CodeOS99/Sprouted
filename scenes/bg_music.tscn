@@ -6,4 +6,5 @@
 [node name="bgMusic" type="AudioStreamPlayer" unique_id=1783223495]
 stream = ExtResource("1_f6gl3")
 autoplay = true
+parameters/looping = true
 script = ExtResource("2_8f2av")

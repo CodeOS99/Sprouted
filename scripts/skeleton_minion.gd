@@ -4,11 +4,20 @@ const SPEED = 4.0
 const ATTACK_RANGE = 2.4
 var health = 3
 var is_dead = false
+var is_spawning = true
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var anim_player: AnimationPlayer = $mesh/AnimationPlayer
 
+func _ready() -> void:
+	$SpawnSound.play()
+	anim_player.play("SkeletonMinion/Spawn_Air")
+	await anim_player.animation_finished
+	is_spawning = false
+
 func _process(delta: float) -> void:
+	if is_spawning:
+		return
 	if not is_on_floor():
 		velocity.y -= 9.8 * delta
 		move_and_slide()
@@ -34,12 +43,12 @@ func _process(delta: float) -> void:
 	move_and_slide()
 
 func take_damage(amt: int) -> void:
-	if is_dead:
+	if is_dead or is_spawning:
 		return
+	$SkeletonHurt.play()
 	health -= amt
 	print(health)
 	if health <= 0:
-		print("hee")
 		_die()
 	else:
 		anim_player.stop()
@@ -52,14 +61,12 @@ func _die() -> void:
 	anim_player.play("SkeletonMinion/Death_A")
 	await anim_player.animation_finished
 	anim_player.play("SkeletonMinion/Death_A_Pose")
-
 	var meshes = []
 	for child in find_children("*", "MeshInstance3D", true, false):
 		var mat = child.mesh.surface_get_material(0).duplicate()
 		mat.flags_transparent = true
 		child.set_surface_override_material(0, mat)
 		meshes.append(child)
-
 	var tween = create_tween()
 	for m in meshes:
 		tween.parallel().tween_method(
