@@ -7,19 +7,29 @@ Sprouted is a survival game with procedural generation and a full inventory mech
 ## Guide
 
 WASD to move
+
 Space to jump
+
 Left click to use currently held item
+
 G to open inventory
+
 E while hovering over collectibles to collect them
+
 Shift-click drag to move half stacks
+
 Control-click drag to move single items
+
 Press the craft button to obtain crafts.
+
 Numbers to swap active hotbar slots
 
 - Moving, sprinting, jumping, and using tools makes you hungry.
 - Getting too hungry(>85%) leads to damage.
 - Make bread using wheat to reduce hunger.
 - Obtain small stones to break trees and obtain logs
+- Trees can spawn logs, but also skeletons. Beware!
+- Skeletons may be hurt be axes and stones
 - Use logs to make sticks
 - Use these to make pickaxes to break ores to obtain coal and iron
 
