@@ -17,13 +17,17 @@ var wheat := preload("res://scenes/wheat_collectible.tscn")
 var obj_noise: FastNoiseLite
 
 func _ready() -> void:
+	randomize()
+
 	noise = FastNoiseLite.new()
+	noise.seed = randi()
 	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
-	noise.frequency = 0.01 # lower for smoother
+	noise.frequency = 0.01
 	
 	obj_noise = FastNoiseLite.new()
+	obj_noise.seed = randi()
 	obj_noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
-	obj_noise.frequency = 0.8 # higher for more scattered
+	obj_noise.frequency = 0.8
 	
 	generate_chunks()
 
