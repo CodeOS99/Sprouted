@@ -14,7 +14,7 @@ func spawn_log():
 func spawn_skeleton():
 	var skeleton := skeleton_minion.instantiate()
 	get_tree().root.add_child(skeleton)
-	skeleton.global_position = $LogPoint.global_position
+	skeleton.global_position = $LogPoint.global_position + Vector3(randf_range(-1.5, 1.5), 1.0, randf_range(-1.5, 1.5))
 
 func chopped(damage: float) -> bool:
 	for i in range(health-damage, health):
