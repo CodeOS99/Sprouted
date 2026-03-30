@@ -25,7 +25,8 @@ albedo_color = Color(0.4117647, 0.52156866, 0.28235295, 1)
 points = PackedVector3Array(-10, -0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, -0.5, 10, -10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, 10)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_d2op2"]
-cell_size = 0.5
+agent_height = 2.0
+agent_max_climb = 0.5
 agent_max_slope = 60.0
 
 [node name="MainGame" type="Node3D" unique_id=215476466]

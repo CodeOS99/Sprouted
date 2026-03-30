@@ -45,5 +45,6 @@ func _process(delta: float) -> void:
 func spawn_tree_particle():
 	var particles = tree_particle.instantiate()
 	get_tree().root.add_child(particles)
+	particles.finished.connect(particles.queue_free)
 	particles.global_position = particle_point.global_position
 	particles.emitting = true

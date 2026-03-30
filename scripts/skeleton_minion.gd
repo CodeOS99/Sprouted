@@ -9,6 +9,8 @@ var is_spawning = true
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var anim_player: AnimationPlayer = $mesh/AnimationPlayer
 
+var current_scene
+
 func _ready() -> void:
 	$SpawnSound.play()
 	anim_player.play("SkeletonMinion/Spawn_Air")
@@ -16,6 +18,8 @@ func _ready() -> void:
 	is_spawning = false
 
 func _process(delta: float) -> void:
+	if current_scene != get_tree().current_scene:
+		self.queue_free()
 	if is_spawning:
 		return
 	if not is_on_floor():

@@ -10,6 +10,7 @@ var health: int = MAX_HEALTH
 func spawn_mineral():
 	var mineral = popout_minerals.pick_random().instantiate()
 	get_tree().root.add_child(mineral)
+	mineral.current_scene = get_tree().current_scene
 	mineral.global_position = $MineralPoint.global_position
 
 func chopped(damage: float) -> bool: # also return whether its chopped or not

@@ -11,6 +11,12 @@ var landed := false
 
 var item: ItemData = preload("res://resources/inventory/raw_iron.tres")
 
+var current_scene
+
 func _ready() -> void:
 	var dir = Vector3(randf_range(-0.5,0.5), 0, randf_range(-0.5,0.5)).normalized()
 	apply_impulse(dir * HORIZONTAL_FORCE + Vector3.UP * VERTICAL_FORCE)
+
+func _process(delta: float) -> void:
+	if current_scene != get_tree().current_scene:
+		self.queue_free()

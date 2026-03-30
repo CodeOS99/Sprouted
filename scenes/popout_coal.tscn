@@ -43,9 +43,8 @@ visible = false
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_8xmt8")
 
-[node name="Collectible" type="Node3D" parent="." unique_id=1580883784 node_paths=PackedStringArray("outline_mesh")]
+[node name="Collectible" type="Node3D" parent="." unique_id=1580883784]
 script = ExtResource("2_b5du8")
-outline_mesh = NodePath("")
 item = ExtResource("3_rjac5")
 
 [editable path="coal"]

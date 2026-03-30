@@ -85,13 +85,13 @@ func _process(delta: float) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			can_turn = true
 
-	if hunger_bar.value > 85.0:
+	if hunger_bar.value > 85.0/100 * max_health:
 		hunger_damage_curr += delta
 		if hunger_damage_curr > hunger_damage_interval:
 			hunger_damage_curr = 0
 			take_damage(3)
 			$Hurt.play()
-	elif hunger_bar.value < 20.0:
+	elif hunger_bar.value < 20.0/100 * max_health:
 		health_bar.value = min(health_bar.value + 2.0 * delta, max_health)
 	else:
 		hunger_damage_curr = 0

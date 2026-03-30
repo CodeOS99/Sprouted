@@ -9,11 +9,13 @@ var health: int = MAX_HEALTH
 func spawn_log():
 	var log := popout_log.instantiate()
 	get_tree().root.add_child(log)
+	log.current_scene = get_tree().current_scene
 	log.global_position = $LogPoint.global_position
 
 func spawn_skeleton():
 	var skeleton := skeleton_minion.instantiate()
 	get_tree().root.add_child(skeleton)
+	skeleton.current_scene = get_tree().current_scene
 	skeleton.global_position = $LogPoint.global_position + Vector3(randf_range(-1.5, 1.5), 1.0, randf_range(-1.5, 1.5))
 
 func chopped(damage: float) -> bool:

@@ -4,4 +4,5 @@ func _ready() -> void:
 	self.pressed.connect(_on_pressed)
 
 func _on_pressed() -> void:
+	Globals.player = null
 	get_tree().change_scene_to_file("res://scenes/main_game.tscn")
